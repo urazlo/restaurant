@@ -1,0 +1,26 @@
+// Device breakpoints
+$breakpoints: (
+    mobile-start: 1px,
+    mobile: 350px,   // start of mobile, end of small (maybe old) mobile
+    small-mobile: 370px,
+    medium-mobile: 400px,
+    large-mobile: 429px,
+    tablet: 768px,  // start of tablet, end of mobile
+    tablet-landscape: 992px,  // start of tablet, end of mobile
+    desktop: 1025px, // start of desktop, end of tablet
+    small-desktop: 1100px,
+    medium-desktop: 1200px,  // start of large desktop, end of small-desktop
+    medium-large-desktop: 1250px,  // start of large desktop, end of small-desktop
+    large-desktop: 1921px  // start of extra large desktop, end of large desktop
+);
+
+@function breakpoint($type) {
+    @if not map-has-key($breakpoints, $type) {
+        @return $type;
+    }
+    @return map-get($breakpoints, $type);
+}
+
+$screen: 'only screen';
+$mobile-or-tablet: 'orientation: portrait';
+$sidebar-medium-desktop-breakpoint: 1240px;

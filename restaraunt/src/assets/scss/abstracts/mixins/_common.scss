@@ -1,0 +1,44 @@
+@mixin flex-column() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@mixin flex($justify: false, $align: false, $direction: false, $grow: false, $wrap: false, $gap: false) {
+    display: flex;
+
+    @if ($justify) {
+        justify-content: $justify;
+    }
+
+    @if ($align) {
+        align-items: $align;
+    }
+
+    @if ($direction) {
+        flex-direction: $direction;
+    }
+
+    @if ($grow) {
+        flex-grow: $grow;
+    }
+
+    @if ($wrap) {
+        flex-wrap: $wrap;
+    }
+
+    @if ($gap) {
+        gap: $gap;
+    }
+}
+
+@mixin flex-center() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin full-width-container() {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+}

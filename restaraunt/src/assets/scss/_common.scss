@@ -1,0 +1,53 @@
+@import 'src/assets/scss/abstracts';
+
+html {
+  font-size: 62.5%;
+  color: var(--text-color);
+}
+
+li {
+  list-style: none;
+}
+
+.section {
+  max-width: 1440px;
+
+  margin-right: auto;
+  margin-left: auto;
+
+  padding: 50px 165px;
+
+  &._padding-medium {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  &._margin-medium {
+    margin: 130px auto;
+  }
+
+  @include screen-till(medium-large-desktop) {
+    padding: 25px 30px;
+
+    &._padding-medium {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  }
+
+  @include screen-till(tablet) {
+    padding: 50px 15px;
+  }
+}
+
+._hide-on-mobile {
+  @include screen-till(tablet) {
+    display: none;
+  }
+}
+
+._show-on-mobile {
+  @include screen-from(tablet) {
+    display: none;
+  }
+}

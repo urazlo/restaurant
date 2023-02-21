@@ -1,0 +1,71 @@
+@mixin text($size: false, $color: false, $weight: false, $lh: false, $transition: false, $link: false) {
+    @if $size {
+        font-size: $size;
+    }
+
+    @if $color {
+        color: $color;
+    }
+
+    @if $weight {
+        font-weight: $weight;
+    }
+
+    @if $lh {
+        line-height: $lh;
+    }
+
+    @if $transition {
+        transition: all 0.3s;
+    }
+
+    @if $link {
+        @include pointer();
+        text-decoration: none;
+    }
+}
+
+@mixin pointer() {
+    cursor: pointer;
+    user-select: none;
+}
+
+@mixin link($display: block, $stylize: false) {
+    @include pointer();
+
+    @if ($display != false) {
+        display: $display;
+    }
+
+    text-decoration: none;
+
+    @if ($stylize != false) {
+        color: var(--blue);
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+@mixin line-clamp($linesNumber: 3) {
+    @if ($linesNumber == 1) {
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    @if ($linesNumber != 1) {
+        overflow: hidden;
+        box-orient: vertical;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: $linesNumber;
+    }
+}
+
+@mixin dish-card-text($fontSize: 26px, $textColor: var(--black)) {
+    @include text($fontSize, $textColor, 400, 1.35);
+}
+

@@ -1,0 +1,81 @@
+@import '../variables/_adaptive';
+
+@mixin screen-all {
+    @media screen {
+        @content;
+    }
+}
+
+@mixin screen-from($type) {
+    @media screen and (min-width: breakpoint($type)) {
+        @content;
+    }
+}
+
+@mixin screen-till($type) {
+    @media screen and (max-width: breakpoint($type) - 1) {
+        @content;
+    }
+}
+
+@mixin screen-between($typeFrom, $typeTo) {
+    @media screen and (min-width: breakpoint($typeFrom)) and (max-width: breakpoint($typeTo) - 1) {
+        @content;
+    }
+}
+
+@mixin size($width: false, $height: false) {
+    @if ($width) {
+        min-width: $width;
+        max-width: $width;
+    }
+
+    @if ($height) {
+        min-height: $height;
+        max-height: $height;
+    }
+}
+
+
+
+@mixin screen-small-mobile() {
+    @include screen-till(mobile) {
+        @content;
+    }
+}
+
+@mixin screen-mobile() {
+    @include screen-between(mobile, tablet) {
+        @content;
+    }
+}
+
+@mixin screen-all-mobile() {
+    @include screen-till(tablet) {
+        @content;
+    }
+}
+
+@mixin screen-tablet() {
+    @include screen-between(tablet, desktop) {
+        @content;
+    }
+}
+
+@mixin screen-small-desktop() {
+    @include screen-between(desktop, medium-desktop) {
+        @content;
+    }
+}
+
+@mixin screen-medium-desktop() {
+    @include screen-between(medium-desktop, large-desktop) {
+        @content;
+    }
+}
+
+@mixin screen-large-desktop() {
+    @include screen-from(large-desktop) {
+        @content;
+    }
+}
